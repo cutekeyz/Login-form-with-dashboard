@@ -7,7 +7,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [isAgreed, setIsAgreed] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,12 +28,13 @@ const Login = () => {
     setTimeout(() => {
       setEmail("");
       setPassword("");
+      setIsAgreed(false);
 
     setIsLoading(false);
     setIsLoggedIn(true);
     }, 1500);
 
-    // console.log("Login Successfull", {email, password});
+    console.log("Login Successfull", {email, password, isAgreed});
   };
 
   if (isLoggedIn) {
@@ -55,15 +56,17 @@ const Login = () => {
         type="email"
         value={email}
         placeholder="Enter Your Email"
-        onChange={e => setEmail(e.target.value)}
+        onChange={(e) => setEmail(e.target.value)}
+        
          /></div>
         <div className="mb-6"><input className="border border-amber-100 py-3 px-3 rounded-xl  w-full"
         type="password"
         value={password}
         placeholder="Enter Your Password"
-        onChange={e => setPassword(e.target.value)}
+        onChange={(e) => setPassword(e.target.value)}
+        
          /></div>
-         <div className="flex gap-3 mb-4"><input type="checkbox" />
+         <div className="flex gap-3 mb-4"><input type="checkbox" checked={isAgreed} onChange={(e) => setIsAgreed(e.target.checked)} />
          Remeber me</div>
          <div><button className="bg-green-700 hover:bg-green-800 py-4 px-4 rounded-xl w-full mb-2 cursor-pointer" disabled={isLoading}>
           {isLoading ? "Login..." : "Login"}
