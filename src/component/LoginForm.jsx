@@ -29,9 +29,8 @@ const Login = () => {
       setEmail("");
       setPassword("");
       setIsAgreed(false);
-
-    setIsLoading(false);
-    setIsLoggedIn(true);
+      setIsLoading(false);
+      setIsLoggedIn(true);
     }, 1500);
 
     console.log("Login Successfull", {email, password, isAgreed});
